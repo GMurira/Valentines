@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">ValentineItemsApp</string>
+    <string name="top_Text">Find Your Lovely</string>
+    <string name="top_Text2">Item with us</string>
+    <string name="price">20.0</string>
+    <string name="rating">4.5</string>
 </resources>
