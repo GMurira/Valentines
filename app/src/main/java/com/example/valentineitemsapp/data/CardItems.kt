@@ -22,4 +22,17 @@ val cardItems = listOf(
     CardItems(R.string.rating, R.drawable.bereczki_domokos_jsczq2cpnvi_unsplash, R.string.price, R.string.rating),
     CardItems(R.string.rating, R.drawable.bereczki_domokos_jsczq2cpnvi_unsplash, R.string.price, R.string.rating),
     CardItems(R.string.rating, R.drawable.bereczki_domokos_jsczq2cpnvi_unsplash, R.string.price, R.string.rating),
+    CardItems(R.string.rating, R.drawable.bereczki_domokos_jsczq2cpnvi_unsplash, R.string.price, R.string.rating),
+    CardItems(R.string.rating, R.drawable.bereczki_domokos_jsczq2cpnvi_unsplash, R.string.price, R.string.rating),
+    CardItems(R.string.rating, R.drawable.bereczki_domokos_jsczq2cpnvi_unsplash, R.string.price, R.string.rating),
+    CardItems(R.string.rating, R.drawable.bereczki_domokos_jsczq2cpnvi_unsplash, R.string.price, R.string.rating),
+    CardItems(R.string.rating, R.drawable.bereczki_domokos_jsczq2cpnvi_unsplash, R.string.price, R.string.rating),
+    CardItems(R.string.rating, R.drawable.bereczki_domokos_jsczq2cpnvi_unsplash, R.string.price, R.string.rating),
+    CardItems(R.string.rating, R.drawable.bereczki_domokos_jsczq2cpnvi_unsplash, R.string.price, R.string.rating),
+    CardItems(R.string.rating, R.drawable.bereczki_domokos_jsczq2cpnvi_unsplash, R.string.price, R.string.rating),
+    CardItems(R.string.rating, R.drawable.bereczki_domokos_jsczq2cpnvi_unsplash, R.string.price, R.string.rating),
+    CardItems(R.string.rating, R.drawable.bereczki_domokos_jsczq2cpnvi_unsplash, R.string.price, R.string.rating),
+    CardItems(R.string.rating, R.drawable.bereczki_domokos_jsczq2cpnvi_unsplash, R.string.price, R.string.rating),
+    CardItems(R.string.rating, R.drawable.bereczki_domokos_jsczq2cpnvi_unsplash, R.string.price, R.string.rating),
+    CardItems(R.string.rating, R.drawable.bereczki_domokos_jsczq2cpnvi_unsplash, R.string.price, R.string.rating)
 )

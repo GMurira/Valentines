@@ -7,10 +7,14 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.CardColors
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedCard
@@ -19,6 +23,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
@@ -41,6 +46,7 @@ fun HomeScreen(modifier: Modifier = Modifier){
             .padding(dimensionResource(id = R.dimen.padding_medium)),
         horizontalAlignment = Alignment.Start,
     ){
+        HomeScreenCards()
 
     }
 }
@@ -49,7 +55,7 @@ fun HomeScreen(modifier: Modifier = Modifier){
  */
 @Composable
 fun HomeScreenCards(modifier: Modifier = Modifier){
-    LazyColumn(contentPadding = it){
+    LazyVerticalGrid(columns = GridCells.Adaptive(minSize = 128.dp)){
         items(cardItems){
             ValentineCards(cardItem = it, onClick = { /*TODO*/ })
         }
@@ -73,11 +79,28 @@ fun ValentineCards(
     onClick: () -> Unit,
     modifier: Modifier = Modifier
 ){
-    OutlinedCard {
-        CardImage(cardImg = cardItem.cardImg)
-        CardContentNameAndDescription(contentText = cardItem.cardDescription, description = cardItem.price)
-        CardPricingAndRatings(price = cardItem.price, ratings = cardItem.rating)
+    Column (
+        verticalArrangement =   Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = Modifier
+            .padding(dimensionResource(id = R.dimen.padding_small))
+    ){
+        OutlinedCard(
+            colors = CardDefaults.cardColors(
+                containerColor = Color.LightGray
+            ),
+            modifier = Modifier
+                .padding(dimensionResource(id = R.dimen.padding_medium))
+                .width(160.dp)
+        ) {
+            CardImage(cardImg = cardItem.cardImg)
+            CardContentNameAndDescription(
+                contentText = cardItem.cardDescription,
+                description = cardItem.price
+            )
+            CardPricingAndRatings(price = cardItem.price, ratings = cardItem.rating)
 
+        }
     }
 }
 /**
