@@ -104,9 +104,11 @@ fun ValentineCards(
 fun CardImage(
     cardImg: Int,
     modifier: Modifier = Modifier){
-    Row(
-        horizontalArrangement = Arrangement.Center,
-        verticalAlignment = Alignment.CenterVertically
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center,
+        modifier = Modifier
+            .padding(dimensionResource(id = R.dimen.padding_small))
     ) {
         Image(
 

@@ -32,10 +32,10 @@ import com.example.valentineitemsapp.R
  * Valentine App
  */
 @Composable
-fun ValentineApp(modifier: Modifier = Modifier){
+fun ValentineApp() {
     Scaffold (
-        topBar = { ValentineTopAppBar()},
-        bottomBar = { ValentineBottomAppBar()},
+        topBar = { ValentineTopAppBar() },
+        bottomBar = { ValentineBottomAppBar() },
         floatingActionButton = {
             FloatingActionButton(onClick = { /*TODO*/ }) {
                 Icon(imageVector = Icons.Default.Favorite, contentDescription = null)
@@ -49,7 +49,7 @@ fun ValentineApp(modifier: Modifier = Modifier){
  * Valentine Top App and Bottom App Bar
  */
 @Composable
-fun ValentineTopAppBar(modifier: Modifier = Modifier){
+fun ValentineTopAppBar() {
     Row (
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceEvenly,
@@ -73,7 +73,7 @@ fun ValentineTopAppBar(modifier: Modifier = Modifier){
     }
 }
 @Composable
-fun ValentineBottomAppBar(modifier: Modifier = Modifier){
+fun ValentineBottomAppBar() {
     Row(modifier = Modifier
         .fillMaxWidth()
         .background(color = Color.LightGray),
@@ -99,7 +99,7 @@ fun ValentineAppPreview(modifier: Modifier = Modifier){
     ValentineApp()
 }
 /**
- * Vaentine top app bar preview
+ * Valentine top app bar preview
  */
 @Preview(showBackground = true)
 @Composable

@@ -5,4 +5,6 @@
     <string name="price">Ksh 20</string>
     <string name="Love">Love</string>
     <string name="rating">4.5</string>
+    <string name="share">Share</string>
+    <string name="publish">Publish</string>
 </resources>
