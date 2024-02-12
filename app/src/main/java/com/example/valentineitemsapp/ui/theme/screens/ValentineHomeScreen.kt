@@ -4,6 +4,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -79,29 +80,22 @@ fun ValentineCards(
     onClick: () -> Unit,
     modifier: Modifier = Modifier
 ){
-    Column (
-        verticalArrangement =   Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = Modifier
-            .padding(dimensionResource(id = R.dimen.padding_extra_small))
-    ){
         OutlinedCard(
-            colors = CardDefaults.cardColors(
-                containerColor = Color.LightGray
-            ),
+
+            colors = CardDefaults.cardColors(containerColor = Color.LightGray),
             modifier = Modifier
-                .padding(dimensionResource(id = R.dimen.padding_medium))
+                .padding(dimensionResource(id = R.dimen.padding_small))
                 .width(160.dp)
         ) {
             CardImage(cardImg = cardItem.cardImg)
             CardContentNameAndDescription(
-                contentText = cardItem.cardDescription,
                 description = cardItem.price
             )
-            CardPricingAndRatings(price = cardItem.price, ratings = cardItem.rating)
+            CardPricingAndRatings(
+                price = cardItem.price, ratings = cardItem.rating
+            )
 
         }
-    }
 }
 /**
  * Card content Image
@@ -110,30 +104,35 @@ fun ValentineCards(
 fun CardImage(
     cardImg: Int,
     modifier: Modifier = Modifier){
-    Image(
-        modifier = Modifier
-            .size(dimensionResource(id = R.dimen.image_size))
-            .clip(MaterialTheme.shapes.medium),
-        painter = painterResource(cardImg),
-        contentDescription = null,
-        contentScale = ContentScale.Crop,
+    Row(
+        horizontalArrangement = Arrangement.Center,
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Image(
+
+            modifier = Modifier
+                .size(dimensionResource(id = R.dimen.image_size))
+                .clip(MaterialTheme.shapes.large),
+            painter = painterResource(cardImg),
+            contentDescription = null,
+            contentScale = ContentScale.Crop,
         )
+    }
 }
 /**
  * Card content Name and description
  */
 @Composable
 fun CardContentNameAndDescription(
-    contentText: Int,
     description: Int,
-    modifier: Modifier = Modifier){
-    Column (
-        verticalArrangement = Arrangement.SpaceEvenly,
-        horizontalAlignment = Alignment.Start,
+    modifier: Modifier = Modifier
+){
+    Row (
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.Center,
         modifier = Modifier
             .padding(dimensionResource(id = R.dimen.padding_small))
     ){
-        Text(text = stringResource(contentText) )
         Text(text = stringResource(description) )
     }
 }
@@ -146,9 +145,12 @@ fun CardPricingAndRatings(
     ratings: Int,
     modifier: Modifier = Modifier){
     Row (
+        horizontalArrangement = Arrangement.SpaceEvenly,
+        verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier
     ){
         Text(text = stringResource(price))
+        Spacer(modifier = Modifier.weight(0.2f))
         Text(text = stringResource(ratings))
     }
 }
