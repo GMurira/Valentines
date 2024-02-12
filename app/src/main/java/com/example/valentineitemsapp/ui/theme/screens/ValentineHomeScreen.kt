@@ -83,7 +83,7 @@ fun ValentineCards(
         verticalArrangement =   Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier
-            .padding(dimensionResource(id = R.dimen.padding_small))
+            .padding(dimensionResource(id = R.dimen.padding_extra_small))
     ){
         OutlinedCard(
             colors = CardDefaults.cardColors(
