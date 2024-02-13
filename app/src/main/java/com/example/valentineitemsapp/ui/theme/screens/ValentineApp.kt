@@ -26,8 +26,17 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
 import com.example.valentineitemsapp.R
-
+/**
+ * Enum class with its enum constants defining routes
+ */
+enum class ValentineScreen{
+    ValentineApp,
+    WonderImage,
+    Home,
+}
 /**
  * Valentine App
  */
@@ -43,6 +52,21 @@ fun ValentineApp() {
         }
     ){it
         HomeScreen()
+        NavHost(
+            navController = navController,
+            startDestination = ValentineScreen.Home.name,
+            modifier = Modifier.padding(it)
+        ){
+            composable(route = ValentineScreen.Home.name){
+                ValentineApp()
+            }
+            composable(route = ValentineScreen.WonderImage.name){
+                WonderImagePage()
+            }
+            composable(route = ValentineScreen.ValentineApp.name){
+                ValentineApp()
+            }
+        }
     }
 }
 /**

@@ -7,4 +7,9 @@
     <string name="rating">4.5</string>
     <string name="share">Share</string>
     <string name="publish">Publish</string>
+    <string name="paragraph">
+        I just wanted to take a moment to express how much you mean to me.
+        Your presence in my life brings an abundance of joy,
+        warmth, and support.
+    </string>
 </resources>

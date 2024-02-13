@@ -43,7 +43,7 @@ fun WonderImagePage(modifier: Modifier = Modifier){
             .background(MaterialTheme.colorScheme.errorContainer)
     ) {
         WonderImage(R.drawable.bereczki_domokos_jsczq2cpnvi_unsplash)
-        WonderDescription(descriptionBody = R.string.publish, descriptionText = R.string.Love)
+        WonderDescription(descriptionBody = R.string.paragraph, descriptionText = R.string.Love)
         Spacer(modifier = Modifier.weight(6f))
         WonderImageAndSwitch(switchText = R.string.price)
         Spacer(modifier = Modifier.weight(1f))
