@@ -1,6 +1,7 @@
 package com.example.valentineitemsapp.ui.theme.screens
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -44,7 +45,7 @@ fun HomeScreen(modifier: Modifier = Modifier){
     Column (
         modifier = Modifier
             .fillMaxSize()
-            .padding(dimensionResource(id = R.dimen.padding_medium)),
+            .background(MaterialTheme.colorScheme.errorContainer),
         horizontalAlignment = Alignment.Start,
     ){
         HomeScreenCards()
