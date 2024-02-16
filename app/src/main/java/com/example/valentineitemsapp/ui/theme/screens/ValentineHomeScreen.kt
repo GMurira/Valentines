@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -102,17 +103,19 @@ fun ValentineCards(
 fun CardImage(
     cardImg: Int,
     modifier: Modifier = Modifier){
-    Column(
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center,
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.Center,
         modifier = Modifier
             .padding(dimensionResource(id = R.dimen.padding_small))
+            .fillMaxWidth()
     ) {
         Image(
 
             modifier = Modifier
                 .size(dimensionResource(id = R.dimen.image_size))
-                .clip(MaterialTheme.shapes.large),
+                .clip(MaterialTheme.shapes.medium)
+                .fillMaxWidth(),
             painter = painterResource(cardImg),
             contentDescription = null,
             contentScale = ContentScale.Crop,
@@ -132,6 +135,7 @@ fun CardContentNameAndDescription(
         horizontalArrangement = Arrangement.Center,
         modifier = Modifier
             .padding(dimensionResource(id = R.dimen.padding_small))
+            .fillMaxWidth()
     ){
         Text(text = stringResource(description) )
     }
@@ -148,6 +152,10 @@ fun CardPricingAndRatings(
         horizontalArrangement = Arrangement.SpaceEvenly,
         verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier
+            .padding(
+                start = dimensionResource(id = R.dimen.padding_small),
+                end = dimensionResource(id = R.dimen.padding_small)
+            )
     ){
         Text(text = stringResource(price))
         Spacer(modifier = Modifier.weight(0.2f))

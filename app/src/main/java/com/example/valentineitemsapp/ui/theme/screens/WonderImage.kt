@@ -1,7 +1,9 @@
 package com.example.valentineitemsapp.ui.theme.screens
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -76,7 +78,10 @@ fun WonderImage(
     ) {
         Image(
             painter = painterResource(imgSrc),
-            contentDescription = null)
+            contentDescription = null,
+            modifier = Modifier
+        )
+
     }
 }
 /**
@@ -110,27 +115,22 @@ fun WonderDescription(
 fun WonderImageAndSwitch(
     switchText: Int
 ){
-    var checked by remember {
-        mutableStateOf(true)
-    }
+    var checked by remember { mutableStateOf(true) }
     Row (
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceEvenly,
         modifier = Modifier
-            .background(MaterialTheme.colorScheme.onSurface)
-            .padding(
-                start = dimensionResource(id = R.dimen.padding_small),
-                end = dimensionResource(id = R.dimen.padding_small)
-            )
+            .background(MaterialTheme.colorScheme.onTertiary)
+            .padding(dimensionResource(id = R.dimen.padding_medium))
             .clip(MaterialTheme.shapes.extraLarge)
             .fillMaxWidth()
     ){
         Text(
             text = stringResource(switchText),
-            fontFamily = FontFamily.Serif,
+            fontFamily = FontFamily.Monospace,
             fontWeight = FontWeight.Medium,
             style = MaterialTheme.typography.displaySmall,
-            color = Color.White
+            color = Color.Magenta
         )
         Spacer(modifier = Modifier.weight(1f))
         Switch(

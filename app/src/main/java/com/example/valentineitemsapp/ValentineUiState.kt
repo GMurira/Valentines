@@ -1,5 +1,6 @@
 package com.example.valentineitemsapp
 
-class ValentineUiState {
-    val active: Boolean = true
-}
+data class ValentineUiState (
+    val checked: Boolean = true,
+    val searchText: String = ""
+    )

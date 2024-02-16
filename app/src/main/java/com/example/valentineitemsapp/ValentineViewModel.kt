@@ -9,5 +9,8 @@ class ValentineViewModel : ViewModel(){
     private val uiState = MutableStateFlow(ValentineUiState())
     val _uiState:StateFlow<ValentineUiState> = uiState.asStateFlow()
 
+    /**
+     * Helper Method to for switch button
+     */
 
 }

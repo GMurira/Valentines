@@ -1,7 +1,12 @@
 package com.example.valentineitemsapp.ui.theme.screens
 
+import androidx.compose.animation.animateColorAsState
+import androidx.compose.animation.core.FastOutLinearInEasing
+import androidx.compose.animation.core.Spring
+import androidx.compose.animation.core.spring
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -9,26 +14,37 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AddCircle
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Call
+import androidx.compose.material.icons.filled.Clear
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Settings
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBarColors
+import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.material3.TopAppBarScrollBehavior
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.lerp
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
 import com.example.valentineitemsapp.R
+
 /**
  * Enum class with its enum constants defining routes
  */
@@ -40,10 +56,16 @@ enum class ValentineScreen{
 /**
  * Valentine App
  */
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ValentineApp() {
+fun ValentineApp(scrollBehaviour: TopAppBarScrollBehavior?) {
+
     Scaffold (
-        topBar = { ValentineTopAppBar() },
+        topBar = {
+                 Column {
+                     ValentineTopAppBar()
+                 }
+        },
         bottomBar = { ValentineBottomAppBar() },
         floatingActionButton = {
             FloatingActionButton(onClick = { /*TODO*/ }) {
@@ -51,24 +73,74 @@ fun ValentineApp() {
             }
         }
     ){it
-        HomeScreen()
-        NavHost(
-            navController = navController,
-            startDestination = ValentineScreen.Home.name,
-            modifier = Modifier.padding(it)
-        ){
-            composable(route = ValentineScreen.Home.name){
-                ValentineApp()
-            }
-            composable(route = ValentineScreen.WonderImage.name){
-                WonderImagePage()
-            }
-            composable(route = ValentineScreen.ValentineApp.name){
-                ValentineApp()
-            }
+        {
+
         }
+        HomeScreen()
     }
 }
+
+/**
+ * Valentine Embedded search bar
+ */
+git  init@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun EmbeddedSearch(modifier: Modifier = Modifier){
+    var searchText by remember { mutableStateOf("") }
+    var active by remember { mutableStateOf(false)}
+    androidx.compose.material3.SearchBar(
+        query = searchText,
+        onQueryChange = {
+            searchText = it
+        },
+        onSearch = {
+            active = false
+        },
+        active =  active,
+        onActiveChange = {
+            active = true
+        },
+        placeholder = {
+            Text(text = stringResource(id = R.string.search_Bar_text))
+        },
+        leadingIcon = {
+            Icon(imageVector = Icons.Default.Search, contentDescription = null)
+        },
+        trailingIcon = {
+            Icon(imageVector = Icons.Default.Clear, contentDescription = null)
+        }
+    ){
+
+    }
+}
+/**
+ * Surface behind the serach bar
+ */
+//@OptIn(ExperimentalMaterial3Api::class)
+//@Composable
+//private fun TopAppBarSurface(
+//    modifier: Modifier = Modifier,
+//    colors: TopAppBarColors = TopAppBarDefaults.topAppBarColors(),
+//    scrollBehavior: TopAppBarScrollBehavior? = null,
+//    content: @Composable () -> Unit
+//    ){
+//    val colorTransitionFraction = scrollBehavior?.state?.overlappedFraction ?: 0f
+//    val fraction = if (colorTransitionFraction > 0.01f) 1f else 0f
+//    val appBarContainerColor by animateColorAsState(
+//        targetValue = lerp(
+//            colors.containerColor,
+//            colors.scrolledContainerColor,
+//            FastOutLinearInEasing.transform(fraction),
+//        ),
+//        animationSpec = spring(stiffness = Spring.StiffnessMediumLow),
+//        label = "TopBarSurfaceContainerColorAnimation",
+//    )
+//    Surface(
+//        modifier = Modifier.fillMaxWidth(),
+//        color = appBarContainerColor,
+//        content = content
+//    )
+//}
 /**
  * Valentine Top App and Bottom App Bar
  */
@@ -115,12 +187,20 @@ fun ValentineBottomAppBar() {
     }
 }
 /**
+ * Valentine search app bar
+ */
+@Preview(showBackground = true)
+@Composable
+fun EmbeddedSearchBarPreview(){
+    EmbeddedSearch()
+}
+/**
  * Valentine App preview
  */
 @Preview(showBackground = true)
 @Composable
 fun ValentineAppPreview(modifier: Modifier = Modifier){
-    ValentineApp()
+    //ValentineApp()
 }
 /**
  * Valentine top app bar preview
