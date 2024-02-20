@@ -83,7 +83,7 @@ fun ValentineApp(scrollBehaviour: TopAppBarScrollBehavior?) {
 /**
  * Valentine Embedded search bar
  */
-git  init@OptIn(ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun EmbeddedSearch(modifier: Modifier = Modifier){
     var searchText by remember { mutableStateOf("") }
