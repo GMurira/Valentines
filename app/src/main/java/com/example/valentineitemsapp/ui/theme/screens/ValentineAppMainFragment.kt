@@ -4,6 +4,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
@@ -32,11 +33,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavHost
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import com.example.valentineitemsapp.R
 
 /**
@@ -46,13 +50,16 @@ enum class ValentineScreen{
     ValentineApp,
     WonderImage,
     Home,
+    ExamplePage2,
+    ExamplePage3,
+    ExamplePage1
 }
 /**
  * Valentine App
  */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ValentineApp(scrollBehaviour: TopAppBarScrollBehavior?) {
+fun ValentineApp() {
 
     Scaffold (
         topBar = {
@@ -67,23 +74,37 @@ fun ValentineApp(scrollBehaviour: TopAppBarScrollBehavior?) {
             }
         }
     ){it
+        HomeScreen()
         NavHost(
             navController = navController,
             startDestination = ValentineScreen.Home.name,
             modifier = Modifier.padding(it)
         ){
-            /**
-             * Handle rotes in the app
-             */
-            composable(route = ValentineScreen.Home.name){
-                HomeScreen()
+            composable(route = ValentineScreen.ExamplePage1.name){
+                ExamplePageOne(
+                    modifier = Modifier.fillMaxSize(),
+                    onNextButtonClicked = {
+                        navController.navigate(ValentineScreen.ExamplePage2.name)
+                    }
+                )
             }
-            composable(route = ValentineScreen.WonderImage.name ){
-                WonderImage(imgSrc = )
+            composable(route = ValentineScreen.ExamplePage2.name){
+                ExamplePageTwo(
+                    modifier = Modifier.fillMaxSize()
+
+                )
+            }
+            composable(route = ValentineScreen.ExamplePage3.name){
+                ExamplePageThree(
+                    modifier = Modifier.fillMaxSize()
+
+
+                )
+            }
+            composable(route = ValentineScreen.Home.name){
+                ValentineApp()
             }
         }
-        HomeScreen()
-
     }
 }
 

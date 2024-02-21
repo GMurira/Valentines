@@ -30,6 +30,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.compose.NavHost
 import com.example.valentineitemsapp.R
 import com.example.valentineitemsapp.data.CardItems
 import com.example.valentineitemsapp.data.cardItems
@@ -47,7 +48,6 @@ fun HomeScreen(modifier: Modifier = Modifier){
         horizontalAlignment = Alignment.Start,
     ){
         HomeScreenCards()
-
     }
 }
 /**
