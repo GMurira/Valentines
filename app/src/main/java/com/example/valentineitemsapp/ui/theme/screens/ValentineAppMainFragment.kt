@@ -1,9 +1,5 @@
 package com.example.valentineitemsapp.ui.theme.screens
 
-import androidx.compose.animation.animateColorAsState
-import androidx.compose.animation.core.FastOutLinearInEasing
-import androidx.compose.animation.core.Spring
-import androidx.compose.animation.core.spring
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -25,10 +21,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBarColors
-import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.TopAppBarScrollBehavior
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -38,11 +31,12 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.lerp
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
 import com.example.valentineitemsapp.R
 
 /**
@@ -73,10 +67,23 @@ fun ValentineApp(scrollBehaviour: TopAppBarScrollBehavior?) {
             }
         }
     ){it
-        {
-
+        NavHost(
+            navController = navController,
+            startDestination = ValentineScreen.Home.name,
+            modifier = Modifier.padding(it)
+        ){
+            /**
+             * Handle rotes in the app
+             */
+            composable(route = ValentineScreen.Home.name){
+                HomeScreen()
+            }
+            composable(route = ValentineScreen.WonderImage.name ){
+                WonderImage(imgSrc = )
+            }
         }
         HomeScreen()
+
     }
 }
 
